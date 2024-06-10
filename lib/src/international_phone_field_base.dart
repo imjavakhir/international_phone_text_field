@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,9 +5,57 @@ import 'package:formz/formz.dart';
 import 'package:international_phone_field/src/controller/phone_controller_bloc.dart';
 import 'package:international_phone_field/src/entity/country_code_entity.dart';
 import 'package:international_phone_field/src/utils/bottomsheet.dart';
+import 'package:international_phone_field/src/utils/code_part_widget.dart';
+import 'package:international_phone_field/src/utils/country_title_widget.dart';
 import 'package:international_phone_field/src/utils/format_util.dart';
 
 class InternationalPhoneField extends StatefulWidget {
+  /// Divider color between code and phone number
+  /// Default is Colors.black12
+  final Color dividerColor;
+
+  /// Cursor color of the phone number field
+  /// Default is Colors.black
+  final Color cursorColor;
+
+  /// Not found country message to show when country is not selected
+  /// Default is "Country"
+  final String notFoundCountryMessage;
+
+  /// Not found number message to show when phone number is not selected
+  /// Default is "Your phone number"
+  final String notFoundNumberMessage;
+
+  /// Auto focus for the phone number field
+  /// Default is false
+  final bool autoFocus;
+
+  /// Text style for the phone number field
+  /// Default is TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black)
+  final TextStyle style;
+
+  /// Hint text style for the phone number field
+  /// Default is TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black26)
+  final TextStyle hintStyle;
+
+  /// On change callback for the phone number field
+  /// Required
+  /// It will return the full phone number with country code
+  final Function(String text) onChanged;
+
+  /// On country selected callback
+  /// It will return the selected country code
+  final Function(CountryCodes selectedCountryCode)? onCountrySelected;
+
+  /// There is two type of view for the phone number field
+  /// If inOneLine is true, it will show in one line phone number field
+  /// If inOneLine is false, it will show in two lines phone number field
+  /// Default is false
+  final bool inOneLine;
+
+  /// Decoration for the phone number field
+  final BoxDecoration? decoration;
+
   InternationalPhoneField({
     Key? key,
     this.autoFocus = false,
@@ -21,18 +68,8 @@ class InternationalPhoneField extends StatefulWidget {
     this.notFoundNumberMessage = "Your phone number",
     this.dividerColor = Colors.black12,
     this.inOneLine = false,
+    this.decoration,
   }) : super(key: key);
-
-  final Color dividerColor;
-  final Color cursorColor;
-  final String notFoundCountryMessage;
-  final String notFoundNumberMessage;
-  final bool autoFocus;
-  final TextStyle style;
-  final TextStyle hintStyle;
-  final Function(String text) onChanged;
-  final Function(CountryCodes selectedCountryCode)? onCountrySelected;
-  final bool inOneLine;
 
   @override
   State<InternationalPhoneField> createState() => _InternationalPhoneFieldState();
@@ -94,159 +131,159 @@ class _InternationalPhoneFieldState extends State<InternationalPhoneField> {
           }
         },
         builder: (_, state) {
-          return Column(
-            children: [
-              CountryTitle(
-                state: state,
-                onTap: () {
-                  showCountryList(
-                    controllerBloc,
-                  );
-                },
-                notFoundCountryMessage: widget.notFoundCountryMessage,
-              ),
-              SizedBox(height: 12),
-              Divider(
-                color: widget.dividerColor,
-                height: 0,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 60,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text("+", style: widget.style),
-                        Flexible(
-                          fit: FlexFit.loose,
-                          child: IntrinsicWidth(
-                            child: TextFormField(
-                              keyboardType: TextInputType.phone,
-                              controller: codeController,
-                              maxLines: 1,
-                              maxLength: 4,
-                              focusNode: _codeFocusNode,
-                              style: widget.style,
-                              decoration: InputDecoration(
-                                counterText: "",
-                                border: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                              ),
-                              cursorColor: widget.cursorColor,
-                              onChanged: (String text) {
+          return Container(
+            decoration: widget.inOneLine
+                ? widget.decoration ??
+                    BoxDecoration(
+                      border: Border.all(
+                        color: (_phoneFocusNode.hasFocus || _codeFocusNode.hasFocus)
+                            ? Colors.lightBlueAccent
+                            : Colors.black12,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    )
+                : null,
+            child: Column(
+              children: [
+                /// If inOneLine is true, show only phone field
+                if (!widget.inOneLine) ...[
+                  CountryTitle(
+                    state: state,
+                    onTap: () {
+                      showCountryList(
+                        controllerBloc,
+                      );
+                    },
+                    inOneLine: widget.inOneLine,
+                    notFoundCountryMessage: widget.notFoundCountryMessage,
+                  ),
+                  SizedBox(height: 12),
+                  Divider(
+                    color: widget.dividerColor,
+                    height: 0,
+                  )
+                ],
+                Row(
+                  children: [
+                    if (widget.inOneLine) ...[
+                      CountryTitle(
+                        state: state,
+                        onTap: () {
+                          showCountryList(
+                            controllerBloc,
+                          );
+                        },
+                        inOneLine: widget.inOneLine,
+                        notFoundCountryMessage: widget.notFoundCountryMessage,
+                      ),
+                    ],
+                    CodePartWidget(
+                      widget: widget,
+                      codeController: codeController,
+                      codeFocusNode: _codeFocusNode,
+                      controllerBloc: controllerBloc,
+                    ),
+                    Container(
+                      width: 1,
+                      margin: EdgeInsets.symmetric(horizontal: 12),
+                      height: 30,
+                      color: widget.dividerColor,
+                    ),
+                    Flexible(
+                      fit: FlexFit.loose,
+                      child: Stack(
+                        alignment: Alignment.centerLeft,
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.phone,
+                            controller: phoneController,
+                            focusNode: _phoneFocusNode,
+                            maxLines: 1,
+                            maxLength: 20,
+                            autofocus: true,
+                            inputFormatters: formatter,
+                            style: widget.style,
+                            decoration: InputDecoration(
+                              counterText: "",
+                              border: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                            ),
+                            onChanged: (String text) {
+                              if (text.isEmpty) {
+                                _codeFocusNode.requestFocus();
+                              } else if (!state.selectedCountryCode.isNotEmpty()) {
                                 controllerBloc.add(FindCountryCode(code: text));
+                              } else {
+                                controllerBloc.add(AdditionalFinder(code: text));
+                              }
+
+                              var actualText = phoneFormatter(mask: state.selectedCountryCode.phoneMask)
+                                  .unmaskText(text.replaceAll(nonWidthSpace, ""));
+                              widget.onChanged("+${state.selectedCountryCode.internalPhoneCode}${actualText}");
+                            },
+                            onTap: () {
+                              if (phoneController.text.isEmpty) {
+                                phoneController.text = nonWidthSpace;
+                              }
+                            },
+                          ),
+
+                          /// This is a hint text field to show the mask of the phone number
+                          IgnorePointer(
+                            child: ValueListenableBuilder(
+                              valueListenable: phoneController,
+                              builder: (_, value, child) {
+                                final hintController = TextEditingController();
+                                if (state.selectedCountryCode.isNotEmpty()) {
+                                  var phoneLength = value.text.replaceAll(nonWidthSpace, "").length;
+                                  var actualText = phoneFormatter(mask: state.selectedCountryCode.phoneMask)
+                                      .unmaskText(value.text.replaceAll(nonWidthSpace, ""));
+                                  String maskFull = List.generate(
+                                          state.selectedCountryCode.phoneMask.length - phoneLength, (index) => "0")
+                                      .toString()
+                                      .replaceAll("[", "")
+                                      .replaceAll("]", "")
+                                      .replaceAll(",", "")
+                                      .replaceAll(" ", "");
+
+                                  final actualMaskText = actualText + maskFull;
+
+                                  var finalMaskText =
+                                      phoneFormatter(mask: state.selectedCountryCode.phoneMask).maskText(
+                                    actualMaskText,
+                                  );
+                                  hintController.text = finalMaskText;
+                                } else if (value.text.replaceAll(nonWidthSpace, "").isNotEmpty) {
+                                  hintController.text = value.text;
+                                }
+                                return TextField(
+                                  style: widget.hintStyle,
+                                  controller: hintController,
+                                  decoration: InputDecoration(
+                                    enabled: false,
+                                    counterText: "",
+                                    hintText: widget.notFoundNumberMessage,
+                                    hintStyle: widget.hintStyle,
+                                    border: InputBorder.none,
+                                    disabledBorder: InputBorder.none,
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
+                                    errorBorder: InputBorder.none,
+                                  ),
+                                );
                               },
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 1,
-                    margin: EdgeInsets.symmetric(horizontal: 12),
-                    height: 30,
-                    color: widget.dividerColor,
-                  ),
-                  Flexible(
-                    fit: FlexFit.loose,
-                    child: Stack(
-                      alignment: Alignment.centerLeft,
-                      children: [
-                        TextFormField(
-                          keyboardType: TextInputType.phone,
-                          controller: phoneController,
-                          focusNode: _phoneFocusNode,
-                          maxLines: 1,
-                          maxLength: 20,
-                          autofocus: true,
-                          inputFormatters: formatter,
-                          style: widget.style,
-                          decoration: InputDecoration(
-                            counterText: "",
-                            border: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                          ),
-                          onChanged: (String text) {
-                            if (text.isEmpty) {
-                              _codeFocusNode.requestFocus();
-                            } else if (!state.selectedCountryCode.isNotEmpty()) {
-                              controllerBloc.add(FindCountryCode(code: text));
-                            } else {
-                              controllerBloc.add(AdditionalFinder(code: text));
-                            }
-
-                            var actualText = phoneFormatter(mask: state.selectedCountryCode.phoneMask)
-                                .unmaskText(text.replaceAll(nonWidthSpace, ""));
-                            widget.onChanged("+${state.selectedCountryCode.internalPhoneCode}${actualText}");
-                          },
-                          onTap: () {
-                            if (phoneController.text.isEmpty) {
-                              phoneController.text = nonWidthSpace;
-                            }
-                          },
-                        ),
-
-                        /// This is a hint text field to show the mask of the phone number
-                        IgnorePointer(
-                          child: ValueListenableBuilder(
-                            valueListenable: phoneController,
-                            builder: (_, value, child) {
-                              final hintController = TextEditingController();
-                              if (state.selectedCountryCode.isNotEmpty()) {
-                                var phoneLength = value.text.replaceAll(nonWidthSpace, "").length;
-                                var actualText = phoneFormatter(mask: state.selectedCountryCode.phoneMask)
-                                    .unmaskText(value.text.replaceAll(nonWidthSpace, ""));
-                                String maskFull = List.generate(
-                                        state.selectedCountryCode.phoneMask.length - phoneLength, (index) => "0")
-                                    .toString()
-                                    .replaceAll("[", "")
-                                    .replaceAll("]", "")
-                                    .replaceAll(",", "")
-                                    .replaceAll(" ", "");
-
-                                final actualMaskText = actualText + maskFull;
-
-                                var finalMaskText = phoneFormatter(mask: state.selectedCountryCode.phoneMask).maskText(
-                                  actualMaskText,
-                                );
-                                hintController.text = finalMaskText;
-                              } else if (value.text.replaceAll(nonWidthSpace, "").isNotEmpty) {
-                                hintController.text = value.text;
-                              }
-                              return TextField(
-                                style: widget.hintStyle,
-                                controller: hintController,
-                                decoration: InputDecoration(
-                                  enabled: false,
-                                  counterText: "",
-                                  hintText: widget.notFoundNumberMessage,
-                                  hintStyle: widget.hintStyle,
-                                  border: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ],
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -259,6 +296,7 @@ class _InternationalPhoneFieldState extends State<InternationalPhoneField> {
     codeController.dispose();
     _phoneFocusNode.dispose();
     _codeFocusNode.dispose();
+    controllerBloc.close();
     super.dispose();
   }
 
@@ -282,84 +320,6 @@ class _InternationalPhoneFieldState extends State<InternationalPhoneField> {
         child: BlocProvider.value(
           value: bloc,
           child: CountriesBottomSheet(),
-        ),
-      ),
-    );
-  }
-}
-
-class CountryTitle extends StatelessWidget {
-  CountryTitle({
-    super.key,
-    required this.state,
-    this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-    required this.onTap,
-    required String notFoundCountryMessage,
-    this.countryTextStyle,
-  });
-
-  final PhoneControllerState state;
-  final TextStyle style;
-  final TextStyle? countryTextStyle;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: AnimatedCrossFade(
-          firstChild: Row(
-            children: [
-              if (state.selectedCountryCode.countryCode.isNotEmpty)
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(3),
-                  child: Image.asset(
-                    'assets/flags/${state.selectedCountryCode.countryCode.toLowerCase()}.png',
-                    height: 18,
-                    width: 34,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: Colors.grey.shade200,
-                      height: 18,
-                      width: 34,
-                    ),
-                  ),
-                )
-              else
-                Container(
-                  color: Colors.grey.shade200,
-                  height: 18,
-                  width: 34,
-                ),
-              SizedBox(width: 8),
-              Text(
-                state.selectedCountryCode.country,
-                style: countryTextStyle ??
-                    TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.blue,
-                    ),
-              ),
-            ],
-          ),
-          secondChild: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Country",
-              style: countryTextStyle ??
-                  TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.blue,
-                  ),
-            ),
-          ),
-          crossFadeState: state.selectedCountryCode.isNotEmpty() ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-          duration: Duration(milliseconds: 400),
         ),
       ),
     );
