@@ -137,6 +137,8 @@ class _CountriesBottomSheetState extends State<CountriesBottomSheet> {
                             onTap: () {
                               context.read<PhoneControllerBloc>().add(SelectCountryCodeEvent(country));
                               Navigator.pop(context);
+                              controller.clear();
+                              context.read<PhoneControllerBloc>().add(SearchCountryCodesEvent(''));
                             },
                             behavior: HitTestBehavior.opaque,
                             child: Padding(

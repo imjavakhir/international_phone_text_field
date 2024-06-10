@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
               onChanged: (text) {
                 print(text);
               },
-              inOneLine: true,
+              inOneLine: false,
             ),
           ],
         ),
