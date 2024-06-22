@@ -13,11 +13,21 @@ and the Flutter guide for
 
 # International Phone Field 🌐
 
-![banner](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/banner.png)
+This package provides a Flutter widget that can be used to input international phone numbers. 
+It is highly customizable and can be used to input phone numbers in any format.
+It also provides a way to validate the phone number and return the country code and the phone number.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+![banner](https://drive.google.com/file/d/1_x5xGgud-GmuHUsa5MahBpn7Osy7Vm_C/view?usp=share_link)
+
+-Version 1.
+*Two line verison*
+![verions1](https://drive.google.com/file/d/1x0lhqVkjNmd4r1LqyXcOGg0u9um23n6G/view?usp=share_link)
+ 
+-Version 2.
+*One line verison*
+![verions1](https://drive.google.com/file/d/1Sffrr8zzqLYh4OLZJ5KmTRKrL-mJUFo4/view?usp=share_link)
 
 ## Getting started
 
