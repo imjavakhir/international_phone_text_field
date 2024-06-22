@@ -25,6 +25,9 @@ and the Flutter guide for
 - It also comes with a build-in bottom sheet to select the country code.
 
 ### Roadmap
+ - [x] Add the theme support
+ - [x] Add the ability to fully customize the text field
+
 
 
 # Follow and support me
