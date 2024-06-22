@@ -14,9 +14,10 @@ and the Flutter guide for
 # International Phone Field 🌐
 
 This package provides a Flutter widget that can be used to input international phone numbers.
-It is highly customizable and can be used to input phone numbers in any format.
-It also provides a way to validate the phone number and return the country code and the phone
-number.
+ - It is highly customizable and can be used to input phone numbers in any format.
+ - It also provides a way to validate the phone number and return the country code and the phone
+ number.
+ - It also comes with a build-in bottom sheet to select the country code.
 
 ## Features
 
@@ -26,7 +27,7 @@ number.
 
 | One line version | Two line version |
 | --- | --- |
-|![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif), | ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)|
+|![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif)|![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)|
 
 ## Getting started
 
@@ -63,4 +64,9 @@ InternationalPhoneField (
 
 If you encounter any issues feel free to open an issue. If you feel the package is missing a
 feature, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
+
+# Follow me 
+ | Telegram | LinkedIn | Instaram                                                                                |
+ | --- | --- |-----------------------------------------------------------------------------------------|
+ | ![Telegram](https://t.me/techiesBlog) | ![LinkedIn](https://www.linkedin.com/in/abduvohobov-isroiljon?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app) | ![Instagram](https://www.instagram.com/iamtechie_?igsh=MThldW03eGNkbWt4&utm_source=qr)  |
 
