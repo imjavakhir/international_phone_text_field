@@ -13,8 +13,6 @@ and the Flutter guide for
 
 # International Phone Text Field 🌐
 
-[![Pub](https://img.shields.io/pub/v/photo_view.svg?style=popout)](https://pub.dartlang.org/packages/international_phone_text_field)
-
 - This package provides a Flutter widget that can be used to input international phone numbers.
 
 - It is highly customizable and can be used to input phone numbers in any format.
