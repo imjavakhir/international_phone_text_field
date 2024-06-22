@@ -24,9 +24,9 @@ and the Flutter guide for
 
 - It also comes with a build-in bottom sheet to select the country code.
 
-### Roadmap
- - [] Add the theme support
- - [] Add the ability to fully customize the text field
+### Roadmap for next version 
+ -  Adding full support for dark and light theme
+ -  Adding ability to fully customize the text field
 
 
 
