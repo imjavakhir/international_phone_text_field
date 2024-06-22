@@ -24,9 +24,9 @@ number.
 
 ### There are two versions of the widget:
 
-- One line version
-- Two line version by default
-  ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif), ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)
+| One line version | Two line version |
+| --- | --- |
+|![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif), | ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)|
 
 ## Getting started
 
@@ -50,15 +50,14 @@ import 'package:international_phone_field/international_phone_field.dart';
 To use this package, you need type the following code:
 
 ```dart
-InternationalPhoneField
-(
-onChanged: (number) {
-print(number);
-},
+InternationalPhoneField (
+  onChanged: (number) {
+    print(number);
+  },
 )
 ```
 
-This is minimal code to use the package
+✌️This is minimal code to use the package
 
 ## Additional information
 
