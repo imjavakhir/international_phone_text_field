@@ -1,6 +1,6 @@
-name: international_phone_field
+name: international_phone_text_field
 description: A Flutter package for international phone field with country code.
-homepage: https://github.com/iamtechieboy/international_phone_field
+homepage: https://github.com/iamtechieboy/international_phone_text_field
 version: 0.0.1
 
 environment:

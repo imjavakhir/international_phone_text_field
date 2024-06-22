@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:international_phone_field/src/entity/country_code_entity.dart';
-import 'package:international_phone_field/src/utils/country_phone_codes.dart';
-import 'package:international_phone_field/src/utils/format_util.dart';
+import 'package:international_phone_text_field/src/entity/country_code_entity.dart';
+import 'package:international_phone_text_field/src/utils/country_phone_codes.dart';
+import 'package:international_phone_text_field/src/utils/format_util.dart';
 
 part 'phone_controller_event.dart';
 

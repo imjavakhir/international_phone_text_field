@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:international_phone_field/src/controller/phone_controller_bloc.dart';
-import 'package:international_phone_field/src/utils/wrong_flag_container.dart';
+import 'package:international_phone_text_field/src/controller/phone_controller_bloc.dart';
+import 'package:international_phone_text_field/src/utils/wrong_flag_container.dart';
 
 class CountryTitle extends StatelessWidget {
   CountryTitle({

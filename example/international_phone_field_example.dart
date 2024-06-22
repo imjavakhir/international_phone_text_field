@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:international_phone_field/international_phone_field.dart';
+import 'package:international_phone_text_field/src/international_phone_text_field_base.dart';
 
 void main() {
   runApp(
@@ -16,16 +16,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('International Phone Field Example'),
+        title: const Text('International Phone Text Field Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            InternationalPhoneField(
-              onChanged: (number) {
-
-              },
+            InternationalPhoneTextField(
+              onChanged: (number) {},
             ),
           ],
         ),

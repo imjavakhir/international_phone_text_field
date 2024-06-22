@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:international_phone_field/src/controller/phone_controller_bloc.dart';
-import 'package:international_phone_field/src/entity/country_code_entity.dart';
-import 'package:international_phone_field/src/utils/bottomsheet.dart';
-import 'package:international_phone_field/src/utils/code_part_widget.dart';
-import 'package:international_phone_field/src/utils/country_title_widget.dart';
-import 'package:international_phone_field/src/utils/format_util.dart';
+import 'package:international_phone_text_field/src/controller/phone_controller_bloc.dart';
+import 'package:international_phone_text_field/src/entity/country_code_entity.dart';
+import 'package:international_phone_text_field/src/utils/bottomsheet.dart';
+import 'package:international_phone_text_field/src/utils/code_part_widget.dart';
+import 'package:international_phone_text_field/src/utils/country_title_widget.dart';
+import 'package:international_phone_text_field/src/utils/format_util.dart';
 
-class InternationalPhoneField extends StatefulWidget {
+class InternationalPhoneTextField extends StatefulWidget {
   /// Divider color between code and phone number
   /// Default is Colors.black12
   final Color dividerColor;
@@ -56,7 +56,7 @@ class InternationalPhoneField extends StatefulWidget {
   /// Decoration for the phone number field
   final BoxDecoration? decoration;
 
-  InternationalPhoneField({
+  InternationalPhoneTextField({
     Key? key,
     this.autoFocus = false,
     this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
@@ -72,10 +72,10 @@ class InternationalPhoneField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<InternationalPhoneField> createState() => _InternationalPhoneFieldState();
+  State<InternationalPhoneTextField> createState() => _InternationalPhoneTextFieldState();
 }
 
-class _InternationalPhoneFieldState extends State<InternationalPhoneField> {
+class _InternationalPhoneTextFieldState extends State<InternationalPhoneTextField> {
   final TextEditingController phoneController = TextEditingController(text: nonWidthSpace);
   final TextEditingController codeController = TextEditingController();
   final _phoneFocusNode = FocusNode();

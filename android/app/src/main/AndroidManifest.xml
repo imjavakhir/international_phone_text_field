@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="international_phone_field"
+        android:label="international_phone_text_field"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:international_phone_field/src/controller/phone_controller_bloc.dart';
-import 'package:international_phone_field/src/entity/country_code_entity.dart';
+import 'package:international_phone_text_field/src/controller/phone_controller_bloc.dart';
+import 'package:international_phone_text_field/src/entity/country_code_entity.dart';
 
 class CountriesBottomSheet extends StatefulWidget {
   const CountriesBottomSheet({

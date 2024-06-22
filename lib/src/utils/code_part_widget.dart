@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:international_phone_field/international_phone_field.dart';
-import 'package:international_phone_field/src/controller/phone_controller_bloc.dart';
+import 'package:international_phone_text_field/international_phone_field.dart';
+import 'package:international_phone_text_field/src/controller/phone_controller_bloc.dart';
 
 class CodePartWidget extends StatelessWidget {
   const CodePartWidget({
@@ -11,7 +11,7 @@ class CodePartWidget extends StatelessWidget {
     required this.controllerBloc,
   }) : _codeFocusNode = codeFocusNode;
 
-  final InternationalPhoneField widget;
+  final InternationalPhoneTextField widget;
   final TextEditingController codeController;
   final FocusNode _codeFocusNode;
   final PhoneControllerBloc controllerBloc;
