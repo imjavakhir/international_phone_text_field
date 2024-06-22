@@ -62,11 +62,10 @@ import 'package:international_phone_text_field/international_phone_text_field.da
 To use this package, you need type the following code:
 
 ```dart
-InternationalPhoneField
-(
-onChanged: (number) {
-print(number);
-},
+InternationalPhoneField(
+  onChanged: (number) {
+    print(number);
+  },
 )
 ```
 
