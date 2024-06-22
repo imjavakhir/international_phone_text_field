@@ -19,15 +19,15 @@ It also provides a way to validate the phone number and return the country code 
 
 ## Features
 
-![banner](https://drive.google.com/file/d/1_x5xGgud-GmuHUsa5MahBpn7Osy7Vm_C/view?usp=share_link)
+![banner](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/banner.png)
 
 -Version 1.
-*Two line verison*
-![verions1](https://drive.google.com/file/d/1x0lhqVkjNmd4r1LqyXcOGg0u9um23n6G/view?usp=share_link)
- 
--Version 2.
 *One line verison*
-![verions1](https://drive.google.com/file/d/1Sffrr8zzqLYh4OLZJ5KmTRKrL-mJUFo4/view?usp=share_link)
+![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif)
+
+-Version 2.
+*Two line verison*
+![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)
 
 ## Getting started
 
