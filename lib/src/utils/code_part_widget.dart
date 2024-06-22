@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:international_phone_text_field/international_phone_field.dart';
+import 'package:international_phone_text_field/international_phone_text_field.dart';
 import 'package:international_phone_text_field/src/controller/phone_controller_bloc.dart';
 
 class CodePartWidget extends StatelessWidget {
