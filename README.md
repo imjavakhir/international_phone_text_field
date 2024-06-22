@@ -13,8 +13,7 @@ and the Flutter guide for
 
 # International Phone Field 🌐
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+![banner](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/banner.png)
 
 ## Features
 
