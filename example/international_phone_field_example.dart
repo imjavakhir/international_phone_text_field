@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
           children: [
             InternationalPhoneTextField(
               onChanged: (number) {},
+              inOneLine: true,
             ),
           ],
         ),
