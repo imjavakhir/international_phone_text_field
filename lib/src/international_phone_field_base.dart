@@ -41,7 +41,7 @@ class InternationalPhoneField extends StatefulWidget {
   /// On change callback for the phone number field
   /// Required
   /// It will return the full phone number with country code
-  final Function(String text) onChanged;
+  final Function(String number) onChanged;
 
   /// On country selected callback
   /// It will return the selected country code

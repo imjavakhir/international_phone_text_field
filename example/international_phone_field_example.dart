@@ -23,11 +23,9 @@ class MyApp extends StatelessWidget {
         child: Column(
           children: [
             InternationalPhoneField(
-              onChanged: (text) {
-                print(text);
-              },
-              inOneLine: false,
+              onChanged: (number) {
 
+              },
             ),
           ],
         ),

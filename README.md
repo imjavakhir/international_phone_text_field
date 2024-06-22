@@ -22,42 +22,46 @@ number.
 
 ![banner](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/banner.png)
 
--Version 1.
-*One line verison*
-![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif)
+### There are two versions of the widget:
 
--Version 2.
-*Two line verison*
-![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)
+- One line version
+- Two line version by default
+  ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/oneLine.gif), ![verions1](https://github.com/iamtechieboy/international_phone_field/blob/master/assets/twoLine.gif)
 
 ## Getting started
 
 Add the package to your `pubspec.yaml` file.
+
 ```yaml
 dependencies:
   international_phone_field: ^0.0.1
 ```
+
 and run `flutter pub get` to install the package.
 
 Import the package in your code.
+
 ```dart
 import 'package:international_phone_field/international_phone_field.dart';
 ```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use this package, you need type the following code:
 
 ```dart
-
-const like = 'sample';
+InternationalPhoneField
+(
+onChanged: (number) {
+print(number);
+},
+)
 ```
+
+This is minimal code to use the package
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
-<meta name="google-site-verification" content="rgUAHYxcHX3kfUlTs13q2rhTNJl5pmPPzFs-k8ROrvs" />
+If you encounter any issues feel free to open an issue. If you feel the package is missing a
+feature, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
 
