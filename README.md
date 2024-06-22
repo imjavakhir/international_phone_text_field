@@ -13,9 +13,10 @@ and the Flutter guide for
 
 # International Phone Field 🌐
 
-This package provides a Flutter widget that can be used to input international phone numbers. 
+This package provides a Flutter widget that can be used to input international phone numbers.
 It is highly customizable and can be used to input phone numbers in any format.
-It also provides a way to validate the phone number and return the country code and the phone number.
+It also provides a way to validate the phone number and return the country code and the phone
+number.
 
 ## Features
 
@@ -31,8 +32,17 @@ It also provides a way to validate the phone number and return the country code 
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package to your `pubspec.yaml` file.
+```yaml
+dependencies:
+  international_phone_field: ^0.0.1
+```
+and run `flutter pub get` to install the package.
+
+Import the package in your code.
+```dart
+import 'package:international_phone_field/international_phone_field.dart';
+```
 
 ## Usage
 
@@ -40,6 +50,7 @@ TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
 ```dart
+
 const like = 'sample';
 ```
 
