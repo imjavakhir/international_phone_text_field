@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectType">
+    <option name="id" value="io.flutter" />
+  </component>
+  <component name="com.github.texhnolyzze.jiraworklogplugin.JiraWorklogPluginState">
+    <option name="lastBranch" value="master" />
+    <option name="timers" value="{&quot;master&quot;:{&quot;total&quot;:5887858581500,&quot;paused&quot;:false,&quot;updatedAtSinceEpoch&quot;:1721629688.730264000}}" />
+    <option name="timeSeries" value="[{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1721120888.936527625,&quot;duration&quot;:3964.879445375},{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1721625916.171271918,&quot;duration&quot;:-3052.886310918},{&quot;branch&quot;:&quot;master&quot;,&quot;started&quot;:1721624629.681800918,&quot;duration&quot;:463.726554082}]" />
+  </component>
+</project>

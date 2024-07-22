@@ -6,7 +6,7 @@ class CountryTitle extends StatelessWidget {
   CountryTitle({
     super.key,
     required this.state,
-    this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
+    this.style = const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
     required this.onTap,
     required this.notFoundCountryMessage,
     this.countryTextStyle,
@@ -27,18 +27,18 @@ class CountryTitle extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: inOneLine ? 0 : 16).copyWith(
-          left: inOneLine ? 16 : 0,
+          left: inOneLine ? 8 : 0,
         ),
         child: AnimatedCrossFade(
           firstChild: Row(
             children: [
               if (state.selectedCountryCode.countryCode.isNotEmpty)
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(3),
+                  borderRadius: BorderRadius.circular(4),
                   child: Image.asset(
                     'assets/flags/${state.selectedCountryCode.countryCode.toLowerCase()}.png',
-                    height: 18,
-                    width: 34,
+                    height: 20,
+                    width: 28,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) => WrongFlagContainer(),
                   ),
@@ -51,7 +51,7 @@ class CountryTitle extends StatelessWidget {
                   state.selectedCountryCode.country,
                   style: countryTextStyle ??
                       TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         fontWeight: FontWeight.w600,
                         color: Colors.blue,
                       ),
@@ -67,7 +67,7 @@ class CountryTitle extends StatelessWidget {
                     notFoundCountryMessage,
                     style: countryTextStyle ??
                         TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w600,
                           color: Colors.blue,
                         ),

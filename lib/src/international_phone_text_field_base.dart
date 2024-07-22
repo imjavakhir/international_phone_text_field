@@ -59,13 +59,13 @@ class InternationalPhoneTextField extends StatefulWidget {
   InternationalPhoneTextField({
     Key? key,
     this.autoFocus = false,
-    this.style = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-    this.hintStyle = const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black26),
+    this.style = const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black),
+    this.hintStyle = const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black26),
     required this.onChanged,
     this.onCountrySelected,
     this.cursorColor = Colors.black,
     this.notFoundCountryMessage = "Country",
-    this.notFoundNumberMessage = "Your phone number",
+    this.notFoundNumberMessage = "__-___-__-__",
     this.dividerColor = Colors.black12,
     this.inOneLine = false,
     this.decoration,
@@ -135,10 +135,11 @@ class _InternationalPhoneTextFieldState extends State<InternationalPhoneTextFiel
             decoration: widget.inOneLine
                 ? widget.decoration ??
                     BoxDecoration(
+                      color: (_phoneFocusNode.hasFocus || _codeFocusNode.hasFocus) ? Colors.white : Color(0xffF5F9FA),
                       border: Border.all(
                         color: (_phoneFocusNode.hasFocus || _codeFocusNode.hasFocus)
-                            ? Colors.lightBlueAccent
-                            : Colors.black12,
+                            ? Color(0xff077E94)
+                            : Colors.transparent,
                       ),
                       borderRadius: BorderRadius.circular(12),
                     )
@@ -146,32 +147,32 @@ class _InternationalPhoneTextFieldState extends State<InternationalPhoneTextFiel
             child: Column(
               children: [
                 /// If inOneLine is true, show only phone field
-                if (!widget.inOneLine) ...[
-                  CountryTitle(
-                    state: state,
-                    onTap: () {
-                      showCountryList(
-                        controllerBloc,
-                      );
-                    },
-                    inOneLine: widget.inOneLine,
-                    notFoundCountryMessage: widget.notFoundCountryMessage,
-                  ),
-                  SizedBox(height: 12),
-                  Divider(
-                    color: widget.dividerColor,
-                    height: 0,
-                  )
-                ],
+                // if (!widget.inOneLine) ...[
+                //   CountryTitle(
+                //     state: state,
+                //     onTap: () {
+                //       showCountryList(
+                //         controllerBloc,
+                //       );
+                //     },
+                //     inOneLine: widget.inOneLine,
+                //     notFoundCountryMessage: widget.notFoundCountryMessage,
+                //   ),
+                //   SizedBox(height: 12),
+                //   Divider(
+                //     color: widget.dividerColor,
+                //     height: 0,
+                //   )
+                // ],
                 Row(
                   children: [
                     if (widget.inOneLine) ...[
                       CountryTitle(
                         state: state,
                         onTap: () {
-                          showCountryList(
-                            controllerBloc,
-                          );
+                          // showCountryList(
+                          //   controllerBloc,
+                          // );
                         },
                         inOneLine: widget.inOneLine,
                         notFoundCountryMessage: widget.notFoundCountryMessage,
@@ -182,12 +183,6 @@ class _InternationalPhoneTextFieldState extends State<InternationalPhoneTextFiel
                       codeController: codeController,
                       codeFocusNode: _codeFocusNode,
                       controllerBloc: controllerBloc,
-                    ),
-                    Container(
-                      width: 1,
-                      margin: EdgeInsets.symmetric(horizontal: 12),
-                      height: 30,
-                      color: widget.dividerColor,
                     ),
                     Flexible(
                       fit: FlexFit.loose,
@@ -203,6 +198,8 @@ class _InternationalPhoneTextFieldState extends State<InternationalPhoneTextFiel
                             autofocus: true,
                             inputFormatters: formatter,
                             style: widget.style,
+                            cursorColor: widget.cursorColor,
+                            cursorHeight: 18,
                             decoration: InputDecoration(
                               counterText: "",
                               border: InputBorder.none,

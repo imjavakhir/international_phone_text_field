@@ -22,9 +22,12 @@ class CodePartWidget extends StatelessWidget {
       width: 60,
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+            width: 8,
+          ),
           Text("+", style: widget.style),
           Flexible(
             fit: FlexFit.loose,
@@ -45,6 +48,7 @@ class CodePartWidget extends StatelessWidget {
                   errorBorder: InputBorder.none,
                 ),
                 cursorColor: widget.cursorColor,
+                cursorHeight: 18,
                 onChanged: (String text) {
                   controllerBloc.add(FindCountryCode(code: text));
                 },
