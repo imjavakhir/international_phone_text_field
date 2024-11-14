@@ -416,7 +416,7 @@ const List<Map<String, dynamic>> countryPhoneCodes = <Map<String, dynamic>>[
     'countryRU': 'Эстония',
     'internalPhoneCode': '372',
     'countryCode': 'EE',
-    'phoneMask': '### ###',
+    'phoneMask': '### #### ## ##',
     'altMasks': [
       '### ### ## ##',
       '### #### ## ##',
@@ -1106,7 +1106,7 @@ const List<Map<String, dynamic>> countryPhoneCodes = <Map<String, dynamic>>[
     'countryRU': 'Великобритания',
     'internalPhoneCode': '44',
     'countryCode': 'GB',
-    'phoneMask': '#### ######',
+    'phoneMask': '#### #### ## ##',
   },
   {
     'country': 'Uruguay',
