@@ -133,7 +133,7 @@ const List<Map<String, dynamic>> countryPhoneCodes = <Map<String, dynamic>>[
     'countryRU': 'Австрия',
     'internalPhoneCode': '43',
     'countryCode': 'AT',
-    'phoneMask': '### ### ## ##',
+    'phoneMask': '### #### ## ##',
   },
   {
     'country': 'Azerbaijan',
